@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Button.css';
 
 const Button = () => {
-    return <button className="my-button">Click</button>;
+	const [buttonText, setButtonText] = useState('Click');
+   return (
+		<button className="my-button" 
+			onClick={()=> setButtonText('Change Text')}
+		>
+			{buttonText}
+		</button>
+	)
 };
 
 export default Button;

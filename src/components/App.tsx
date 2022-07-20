@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Button from "./Button/Button";
 import ButtonProps from "./ButtonProps/ButtonProps";
+import Counter from './Counter/Counter';
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       </header>
       <h1>My React App</h1>
       <Button/>
-      <ButtonProps/>
-
+      <ButtonProps/> 
+		{/* // если просп указаны, то они обязательны для заполнения */}
+		<Counter/>
     </div>
   );
 }
