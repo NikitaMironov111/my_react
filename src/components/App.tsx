@@ -1,19 +1,14 @@
 import React from 'react';
 import './App.css';
-import Button from "./Button/Button";
-import ButtonProps from "./ButtonProps/ButtonProps";
-import Counter from './Counter/Counter';
+import Users from './Users/Users';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <header className="App-header">
       </header>
-      <h1>My React App</h1>
-      <Button/>
-      <ButtonProps/> 
-		{/* // если просп указаны, то они обязательны для заполнения */}
-		<Counter/>
+      <h1 className="mt-1">My React App</h1>
+			<Users></Users>
     </div>
   );
 }
