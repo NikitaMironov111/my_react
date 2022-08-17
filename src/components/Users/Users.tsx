@@ -1,5 +1,5 @@
 import React, {ChangeEvent, FC, useState} from "react";
-import { USERS } from "./usersData";
+import {USERS} from "./usersData";
 import {IUser} from './IUser';
 
 const Users:FC = () => {
@@ -11,8 +11,9 @@ const Users:FC = () => {
 		}
 	};
 	const searchUser = (userName:string) => {
-		
+		setUsers(USERS.filter(user => user.name.toLowerCase().includes(userName.toLowerCase())));
 	};
+
 	return (
 		<>
 			<div className="input-group mb-3">
