@@ -6,7 +6,7 @@ const Search = ({
   setSearch: Dispatch<SetStateAction<string>>;
 }) => {
   return (
-    <div className="input-group mb-3">
+    <div className="input-group mb-3 mt-3">
       <span className="input-group-text" id="basic-addon1">
         Search
       </span>
