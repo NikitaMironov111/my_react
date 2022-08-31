@@ -4,14 +4,13 @@ import NavBar from './NavBar';
 import AppRoutes from './AppRoutes';
 import Context from '../context/context';
 import ModalLogin from './ModalLogin';
-import Login from './Login';
 
 function App() {
-  const [openModal, setOpenModal] = useState(false);
+  const [openModalLogin, setOpenModalLogin] = useState(false);
   return (
-    <Context.Provider value={{ openModal, setOpenModal }}>
+    <Context.Provider value={{ openModalLogin, setOpenModalLogin }}>
       <div className="App">
-        <Login></Login>
+        <ModalLogin></ModalLogin>
         <header className="App-header">
           <NavBar></NavBar>
         </header>

@@ -3,7 +3,7 @@ import Context from '../context/context';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const { setOpenModal } = useContext(Context);
+  const { setOpenModalLogin } = useContext(Context);
 
   return (
     <nav className="navbar navbar-expand-lg bg-light">
@@ -22,7 +22,7 @@ const NavBar = () => {
         </ul>
         <button
           className="btn btn-success"
-          onClick={(prev) => setOpenModal(true)}
+          onClick={(prev) => setOpenModalLogin(true)}
         >
           Log In
         </button>
