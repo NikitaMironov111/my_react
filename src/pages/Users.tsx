@@ -12,39 +12,25 @@ import UserCards from '../components/Users/UserCards';
 import UserAddForm from '../components/Users/UserAddForm';
 import Search from '../components/Search';
 import { useSearch } from '../hooks/useSearch';
-
+import { useAction } from '../hooks/useAction';
+import { useTypedSelector } from '../hooks/useTypedSelectors';
 const Users: FC = () => {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const { users } = useTypedSelector((state) => state.users);
+
   const [showUserForm, setShowUserForm] = useState(false);
   const [btnName, setBtnName] = useState('Add new User');
   const [search, setSearch] = useState('');
+  const { getUsers } = useAction();
 
   useEffect(() => {
-    getUser();
+    getUsers();
   }, []);
   // if deps not used rerender on every change state
   // if deps empty - rerender on first load
   // if deps state - rerender on change this state
   // if in useEffect used return - unmount
 
-  const getUser = async () => {
-    try {
-      const users = await http.get('users');
-      setUsers(users.data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
 
-  const deleteUser = async (id: number) => {
-    const isDelete = window.confirm('Do you want realy delete?');
-    if (isDelete) {
-      const deletedUser = await http.delete(`users/${id}`);
-      if (deletedUser.status == 200) {
-        setUsers(users.filter((user) => user.id !== id));
-      }
-    }
-  };
 
   const searchedUsers = useSearch(users, 'name', search);
 
@@ -59,7 +45,7 @@ const Users: FC = () => {
       >
         {btnName}
       </button>
-      {showUserForm && <UserAddForm setUsers={setUsers} users={users} />}
+      {/* {showUserForm && <UserAddForm setUsers={setUsers} users={users} />} */}
       <UserCards users={searchedUsers} deleteUser={deleteUser} />
     </>
   );

@@ -1,14 +1,13 @@
 import React from 'react';
 import Loader from '../loader';
 import { IUser } from './IUser';
+import { useAction } from '../../hooks/useAction';
+import { useTypedSelector } from '../../hooks/useTypedSelectors';
 
-const UserCards = ({
-  users,
-  deleteUser,
-}: {
-  users: IUser[];
-  deleteUser: (id: number) => void;
-}) => {
+const UserCards = () => {
+  const { users, status } = useTypedSelector((state) => state.users);
+  const { deleteUser } = useAction();
+
   return (
     <div className="row row-cols-1 row-cols-md-3 g-4">
       {users.length ? (
