@@ -3,6 +3,7 @@ import Loader from '../loader';
 import { IUser } from './IUser';
 import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelectors';
+import { Link } from 'react-router-dom';
 
 const UserCards = () => {
   const { users } = useTypedSelector((state) => state.users);
@@ -15,7 +16,10 @@ const UserCards = () => {
           <div className="col" key={user.id}>
             <div className="card h-100">
               <div className="card-body">
-                <h5 className="card-title">{`#${user.id} - ${user.name}`}</h5>
+                <h5 className="card-title">
+                  <Link to={`/users/${user.id}`}>#{user.id}</Link>
+                  {user.name}
+                </h5>
                 <p className="card-text">E-mail: {user.email}</p>
                 <p className="card-text">Phone: {user.phone}</p>
                 <p className="card-text">WebSite: {user.website}</p>

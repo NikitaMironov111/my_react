@@ -30,8 +30,6 @@ const Users: FC = () => {
   // if deps state - rerender on change this state
   // if in useEffect used return - unmount
 
-
-
   const searchedUsers = useSearch(users, 'name', search);
 
   return (
@@ -46,7 +44,7 @@ const Users: FC = () => {
         {btnName}
       </button>
       {/* {showUserForm && <UserAddForm setUsers={setUsers} users={users} />} */}
-      <UserCards users={searchedUsers} deleteUser={deleteUser} />
+      <UserCards />
     </>
   );
 };
