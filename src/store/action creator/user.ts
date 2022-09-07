@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
+import { UserActionType, UsersAction } from '../types/user';
 import http from '../../http';
-import { UsersAction, UserActionType } from '../types/user';
 
 export const getUsers = () => {
   return async (dispatch: Dispatch<UsersAction>) => {
@@ -9,12 +9,14 @@ export const getUsers = () => {
   };
 };
 
-export const deleteUsers = async (id: number) => {
+export const deleteUser = (id: number) => {
   return async (dispatch: Dispatch<UsersAction>) => {
-    const response = await http.delete(`users/${id}`);
-    const isDelete = window.confirm('Do you want realy delete?');
+    const isDelete = window.confirm('Do you really delete this user?');
     if (isDelete) {
-      dispatch({ type: UserActionType.DELETE_USER, payload: response.status });
+      const response = await http.delete(`users/${id}`);
+      if (response.status === 200) {
+        dispatch({ type: UserActionType.DELETE_USER, payload: { id: id } });
+      }
     }
   };
 };

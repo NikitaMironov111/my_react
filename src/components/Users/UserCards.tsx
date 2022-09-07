@@ -5,7 +5,7 @@ import { useAction } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelectors';
 
 const UserCards = () => {
-  const { users, status } = useTypedSelector((state) => state.users);
+  const { users } = useTypedSelector((state) => state.users);
   const { deleteUser } = useAction();
 
   return (
